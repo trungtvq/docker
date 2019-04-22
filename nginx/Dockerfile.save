@@ -1,0 +1,17 @@
+FROM nginx
+
+ COPY /home/trung/dockerdata/nginx  /usr/share/nginx/html
+
+ COPY FROM nginx
+
+ COPY content /usr/share/nginx/html
+
+ COPY conf /etc/nginx
+
+ VOLUME /usr/share/nginx/html
+
+ VOLUME /etc/nginconf /etc/nginx
+
+ VOLUME /usr/share/nginx/html
+
+ VOLUME /etc/ngin

@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - frontend
+    volumes:
+      - ./data:/data
+      - ./conf:/usr/local/etc/redis
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db-data:
+
