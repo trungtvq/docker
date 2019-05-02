@@ -3,7 +3,7 @@ admin:
   address:
     socket_address: { address: 0.0.0.0, port_value: 9901 }
 
-static_resources:
+static_resources5:
   listeners:
   - name: listener_5
     address:
@@ -79,5 +79,5 @@ static_resources:
 #    type: logical_dns
 #    http2_protocol_options: {}
 #    lb_policy: round_robin
-#    hosts: [{ socket_address: { address: 10.8.0.6, port_value: 9090 }}]
+ #   hosts: [{ socket_address: { address: 10.8.0.6, port_value: 9090 }}]
 
