@@ -7,38 +7,33 @@ services:
      volumes:
        - ./config/envoy.yaml:/etc/envoy.yaml
        - ./config:/config
-     expose:
-       - "80"
-       - "9901"
      ports:
-       - "8000:80"
        - "9901:9901"
 
-   route1:
-     build:
-       context: ./route1
-       dockerfile: Dockerfile
-     restart: always
-     environment:
-       - SERVICE_CLUSTER=myroute
-     expose:
-       - "80"
-       - "8081"
-     ports:
-       - 8081:8081
-
-   route4:
-     build:
-       context: ./route5
-       dockerfile: Dockerfile
-     restart: always
-     environment:
-       - SERVICE_CLUSTER=myroute
-     expose:
-       - "80"
-       - "8084"
-     ports:
-       - 8084:8084
+#   route1:
+#     build:
+#       context: ./route1
+#       dockerfile: Dockerfile
+#     restart: always
+#     environment:
+#       - SERVICE_CLUSTER=myroute1
+#     expose:
+#       - "80"
+#       - "8081"
+#     ports:
+#       - 8081:8081
+#   route4:
+#     build:
+#      context: ./route4
+#       dockerfile: Dockerfile
+#     restart: always
+#     environment:
+#       - SERVICE_CLUSTER=myroute4
+#     expose:
+#       - "80"
+#       - "8084"
+#     ports:
+#       - 8084:8084
 
    route5:
      build:
@@ -46,10 +41,7 @@ services:
        dockerfile: Dockerfile
      restart: always
      environment:
-       - SERVICE_CLUSTER=myroute
-     expose:
-       - "80"
-       - "8085"
+       - SERVICE_CLUSTER=myroute5
      ports:
        - 8085:8085
 #CMD /usr/local/bin/envoy -c /etc/envoy.yaml
