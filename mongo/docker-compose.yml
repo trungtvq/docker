@@ -2,23 +2,19 @@ version: '3.1'
 
 services:
 
-  mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_DATA_DIR: /data/db
-      MONGO_LOG_DIR: /dev/null
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example123
-    volumes:
-          - ./data/db:/data/db
+  mongodb:
+    image: 'bitnami/mongodb:latest'
     ports:
-          - 27017:27017
+      - "27017:27017"
+    volumes:
+      - mongodb:/bitnami:rw
+    environment:
+      - MONGODB_ROOT_PASSWORD=password123
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - 8001:8081
+      - 8081:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example123
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
