@@ -24,6 +24,9 @@ static_resources:
                 route:
                   cluster: echo_service
                   max_grpc_timeout: 0s
+#                redirect:
+#                  port_redirect: 8084
+#                  https_redirect: true 
               cors:
                 allow_origin:
                 - "*"
@@ -36,10 +39,17 @@ static_resources:
           - name: envoy.grpc_web
           - name: envoy.cors
           - name: envoy.router
+#    - tls_context:
+#      common_tls_context:
+#          #alpn_protocols: "h2"
+#          tls_certificates:
+#          - certificate_chain: { filename: "/etc/envoy-front-ssl.crt" }
+#            private_key: { filename: "/etc/envoy-front-ssl.key" }  
   clusters:
   - name: echo_service
     connect_timeout: 0.25s
     type: logical_dns
+    #type: strict_dns
     http2_protocol_options: {}
     lb_policy: round_robin
     hosts: [{ socket_address: { address: 10.8.0.22, port_value: 9090 }}]
