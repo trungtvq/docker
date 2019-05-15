@@ -1,25 +1,20 @@
-version: '2'
+version: '3.1'
+
 services:
-    
-    mongodb:
-        image: mongo:latest
-        restart: always
-        container_name: "mongodb"
-        environment:
-          - MONGO_DATA_DIR=/data/db
-          - MONGO_LOG_DIR=/dev/null
-          - MONGODB_USER="trung" 
-          - MONGODB_PASS="pass@123"
-        volumes:
-          - ./data/db:/data/db
-        ports:
-            - 27017:27017
-    #    command: mongod --smallfiles --logpath=/dev/null # --quiet
-    # mongo-express:
-    #     image: mongo-express
-    #     restart: always
-    #     ports:
-    #       - 8081:8081
-    #     environment:
-    #       ME_CONFIG_MONGODB_ADMINUSERNAME: trung
-    #       ME_CONFIG_MONGODB_ADMINPASSWORD: pass@123
+
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb:/bitnami:rw
+    environment:
+      - MONGODB_ROOT_PASSWORD=password123
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
