@@ -6,8 +6,6 @@ services:
     ports:
       - "6379:6379"
     restart: always
-    networks:
-      - frontend
     volumes:
       - ./data:/data
       - ./conf:/usr/local/etc/redis
@@ -20,8 +18,9 @@ services:
         condition: on-failure
 
 networks:
-  frontend:
-  backend:
+  default:
+    external:
+      name: backend
 
 volumes:
   db-data:

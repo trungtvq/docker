@@ -25,6 +25,7 @@ clean:
 	printf "Clean done!"
 
 ##run-kafka: run
+run-kafka:
 	docker run -d \
 		--name kafka \
 		-p 7203:7203 \
@@ -32,8 +33,8 @@ clean:
 		-e KAFKA_ADVERTISED_HOST_NAME=10.199.229.20 \
 		-e ZOOKEEPER_IP=10.199.229.20 \
 		ches/kafka
-
-##run-zoo: run
+#run-zoo: run
+run-zoo:
 	docker run -d \
 		--name zookeeper \
 		-p 2181:2181 \
