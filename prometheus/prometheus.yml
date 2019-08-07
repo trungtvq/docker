@@ -13,5 +13,10 @@ scrape_configs:
   scrape_interval: 5s
   static_configs:
   - targets:
-    - trungcs.com:9100
-    - 10.199.229.20:9100
+    - 10.199.75.196:2112
+    - 10.199.75.196:9100
+- job_name: server2113
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 10.199.75.196:2113
