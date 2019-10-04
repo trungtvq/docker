@@ -6,16 +6,15 @@ FROM alpine:${CODE_VERSION}
 #	git \
 #    && rm -rf /var/cache/apk/*
 ENV data /data
-ENV mydata /home/trung/data
 
 WORKDIR ${data}
 COPY . ${data}
-#COPY consul /usr/local/bin/
-#COPY script.sh /usr/local/bin/
-#RUN ["chmod", "+x", "/usr/local/bin/script.sh"]
-RUN ["chmod","+x","./bin/consul.sh"]
+RUN ["mkdir","bin"]
+ADD https://releases.hashicorp.com/consul/1.6.1/consul_1.6.1_linux_amd64.zip ./
+RUN ["unzip","consul_1.6.1_linux_amd64.zip","-d","bin/"]
+RUN ["rm","consul_1.6.1_linux_amd64.zip"]
+RUN ["chmod","+x","./consul.sh"]
 
 EXPOSE 8500
-#CMD ["/usr/local/bin/script.sh"]
 #ENTRYPOINT ["/bin/sh"]
-CMD ["./bin/consul.sh"]
+CMD ["./consul.sh"]
