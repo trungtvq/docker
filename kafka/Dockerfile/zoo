@@ -1,0 +1,26 @@
+docker run -d \
+--name zookeeper \
+-p 2181:2181 \
+jplock/zookeeper
+
+//go insite
+docker exec -it zookeeper bash
+
+//Connect to Zookeeper server
+bin/zkCli.sh -server 127.0.0.1:2181
+
+//after Connect
+List root
+ls /
+
+List brokers
+ls /brokers
+
+List topics
+ls /brokers/topics
+
+List consumers
+ls /consumers
+
+List consumer owner
+ls /consumers/console-consumer-1532/owners
