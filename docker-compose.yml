@@ -4,7 +4,7 @@ services:
   consul1:
     image: trungtvq/consul
     ports:
-     - 8500:8500
+     - 999:8500
   consul2:
     image: trungtvq/consul       
     ports:
