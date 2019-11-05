@@ -15,8 +15,23 @@ scrape_configs:
   - targets:
     - 10.199.75.196:2112
     - 10.199.75.196:9100
-- job_name: server2113
+- job_name: a
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.199.75.196:2113
+    - 192.168.231.253:10010
+- job_name: b
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 192.168.231.253:10011
+- job_name: c
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 192.168.231.253:10012
+- job_name: d
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 192.168.231.253:10013
