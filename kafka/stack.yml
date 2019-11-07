@@ -17,7 +17,7 @@ services:
     environment:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://27.64.23.131:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://10.79.22.67:9092
   kafka2:
     image: 'bitnami/kafka:latest'
     #volumes_from:
@@ -30,7 +30,7 @@ services:
     environment:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://27.64.23.131:9093
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://10.79.22.67:9093
   kafka3:
     image: 'bitnami/kafka:latest'
   #  volumes:
@@ -43,5 +43,5 @@ services:
     environment:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://27.64.23.131:9094
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://10.79.22.67:9094
 
