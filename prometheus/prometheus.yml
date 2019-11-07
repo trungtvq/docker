@@ -4,34 +4,33 @@ scrape_configs:
   static_configs:
   - targets:
     - localhost:9090
-- job_name: cadvisor
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - cadvisor:8080
-- job_name: node_exporter
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.199.75.196:2112
-    - 10.199.75.196:9100
 - job_name: a
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 192.168.231.253:10010
+    - 10.79.22.67:10010
 - job_name: b
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 192.168.231.253:10011
+    - 10.79.22.67:10011
 - job_name: c
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 192.168.231.253:10012
+    - 10.79.22.67:10012
 - job_name: d
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 192.168.231.253:10013
+    - 10.79.22.67:10013
+- job_name: e
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 10.79.22.67:10014
+- job_name: promotion
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 10.30.83.2:38052
