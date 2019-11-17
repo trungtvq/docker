@@ -10,18 +10,19 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_USER: 'user'
+      MYSQL_USER: 'trung'
       MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: trung
     container_name: "my_mysql"
     volumes:
       - /data/docker/mysql:/var/lib/mysql
 
   postgres:
     image: "postgres"
+    restart: always
     container_name: "my_postgres"
     environment:
-      - POSTGRES_USER=user
+      - POSTGRES_USER=trung
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=mydb
     ports:
@@ -31,6 +32,7 @@ services:
 
   redis:
     image: 'bitnami/redis:latest'
+    restart: always
     container_name: "my_redis"
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
