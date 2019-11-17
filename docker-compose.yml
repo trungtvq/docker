@@ -3,17 +3,21 @@ version: '3.1'
 services:
   consul1:
     image: trungtvq/consul
+    restart: always 
     ports:
      - 999:8500
   consul2:
     image: trungtvq/consul       
+    restart: always 
     ports:
        - 1000:8500
   consul3:
-        image: trungtvq/consul       
+        image: trungtvq/consul
+        restart: always        
         ports:
           - 1001:8500
   consul4:
         image: trungtvq/consul       
+        restart: always 
         ports:
           - 1002:8500
