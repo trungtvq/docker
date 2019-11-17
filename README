@@ -1,3 +1,0 @@
-##Run follow cmd
-sudo chmod a+x startup.sh
-./startup.sh
