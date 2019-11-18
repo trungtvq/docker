@@ -1,3 +1,10 @@
+This repo use TXT to get certificate, if you dont have it, so this project is useless for you.
+Run cmd:
+	docker run --rm -iv${PWD}:/exports trungtvq/cert
+
+Then if success in taking certificate, it will lie in new folder live in current dir.
+Use it well.
+
 This directory contains your keys and certificates.
 
 `privkey.pem`  : the private key for your certificate.
@@ -6,9 +13,3 @@ This directory contains your keys and certificates.
 `cert.pem`     : will break many server configurations, and should not be used
                  without reading further documentation (see link below).
 
-WARNING: DO NOT MOVE OR RENAME THESE FILES!
-         Certbot expects these files to remain in this location in order
-         to function properly!
-
-We recommend not moving these files. For more information, see the Certbot
-User Guide at https://certbot.eff.org/docs/using.html#where-are-my-certificates.
