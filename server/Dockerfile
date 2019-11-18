@@ -1,4 +1,4 @@
-ARG CODE_VERSION=latest
+ARG CODE_VERSION=3.10
 FROM alpine:${CODE_VERSION}
 ENV data /data
 ENV mydata /home/trung/data
