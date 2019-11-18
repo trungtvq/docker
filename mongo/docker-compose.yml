@@ -4,12 +4,13 @@ services:
 
   mongodb:
     image: 'bitnami/mongodb:latest'
+    restart: always
     ports:
       - "27017:27017"
     volumes:
       - mongodb:/bitnami:rw
     environment:
-      - MONGODB_ROOT_PASSWORD=password123
+      - MONGODB_ROOT_PASSWORD=password
   mongo-express:
     image: mongo-express
     restart: always
@@ -18,3 +19,7 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
+
+volumes:
+  mongodb:
+    external: true

@@ -23,5 +23,5 @@ networks:
       name: backend
 
 volumes:
-  db-data:
+  redis-db:
 
