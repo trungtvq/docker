@@ -9,4 +9,4 @@ WORKDIR ${imports}
 COPY . ${imports}
 RUN git clone https://github.com/certbot/certbot.git \
 && ./certbot/letsencrypt-auto certonly --manual --preferred-challenges=dns --email trungtvq.co@gmail.com --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d *.phim.monster -d phim.monster -n || true
-ENTRYPOINT ./certbot/letsencrypt-auto certonly --manual --preferred-challenges=dns --email trungtvq.co@gmail.com --server https://acme-v02.api.letsencrypt.org/directory --agree-tos && chown $(id -u):$(id -g) /etc/letsencrypt -R && cp -rf /etc/letsencrypt/live ${exports}
+ENTRYPOINT ./certbot/letsencrypt-auto certonly --manual --preferred-challenges=dns --email trungtvq.co@gmail.com --server https://acme-v02.api.letsencrypt.org/directory --agree-tos && chown $(id -u):$(id -g) /etc/letsencrypt -R && cp -rf /etc/letsencrypt/archive ${exports}
