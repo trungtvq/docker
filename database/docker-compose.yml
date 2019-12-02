@@ -52,7 +52,7 @@ services:
     restart: always
     volumes:
       - redis_db:/data
-      - ./conf:/usr/local/etc/redis
+      - ./redis_conf/:/usr/local/etc/redis/
     deploy:
       replicas: 2
       update_config:
