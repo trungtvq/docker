@@ -1,4 +1,4 @@
-#docker run --rm -iv${PWD}:/exports trungtvq/cert
+#docker run --rm -iv${PWD}:/exports trungtvq/cert:latest
 FROM ubuntu:18.04
 ENV exports /exports
 RUN mkdir ${exports} \
