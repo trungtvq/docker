@@ -29,8 +29,23 @@ scrape_configs:
   static_configs:
   - targets:
     - 10.79.22.67:10014
-- job_name: promotion
+- job_name: prometheus
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.30.83.2:38052
+    - 10.30.83.2:64311
+- job_name: mte_consumer
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 10.30.83.2:64312
+- job_name: tpe_consumer
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 10.30.83.2:64313
+- job_name: internal_consumer
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 10.30.83.2:64315

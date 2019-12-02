@@ -7,7 +7,7 @@ services:
   ports:
     - "10003:3000"
   environment:
-    - GF_SECURITY_ADMIN_PASSWORD=passwork
+    - GF_SECURITY_ADMIN_PASSWORD=password
   env_file:
     - 'env.grafana'
   volumes:
