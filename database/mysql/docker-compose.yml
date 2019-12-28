@@ -4,8 +4,8 @@ version: '3.1'
 services:
 
   mysql:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: mysql:8.0
+    #command: mysqld --default-authentication-plugin=mysql_native_password
     restart: always
     # ports:
     #   - 3306:3306
@@ -17,6 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD: trung
     container_name: "mysql-3306"
     volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
       - mysql_db:/var/lib/mysql
   
 volumes:
