@@ -3,37 +3,37 @@ scrape_configs:
   scrape_interval: 5s
   static_configs:
   - targets:
-    - localhost:9090
-- job_name: a
+    - 9090.vphim.co
+- job_name: ca
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10010
-- job_name: b
+    - 8080.vphim.co
+- job_name: 40000
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10011
-- job_name: c
+    - 40000.vphim.co
+- job_name: 40001
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10012
-- job_name: d
+    - 40001.vphim.co
+- job_name: 40002
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10013
-- job_name: e
+    - 40002.vphim.co
+- job_name: 40003
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10014
+    - localhost:40003
 - job_name: prometheus
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.30.83.2:64311
+    - 64311.vphim.co
 - job_name: mte_consumer
   scrape_interval: 5s
   static_configs:
