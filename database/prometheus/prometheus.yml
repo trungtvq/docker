@@ -28,27 +28,17 @@ scrape_configs:
   scrape_interval: 5s
   static_configs:
   - targets:
-    - localhost:40003
+    - 40003.vphim.co
+- job_name: 40003
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - 127.0.0.1:40003
 - job_name: prometheus
   scrape_interval: 5s
   static_configs:
   - targets:
     - 64311.vphim.co
-- job_name: mte_consumer
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64312
-- job_name: tpe_consumer
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64313
-- job_name: internal_consumer
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64315
 - job_name: windows_host
   scrape_interval: 5s
   static_configs:
