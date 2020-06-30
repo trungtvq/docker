@@ -7,14 +7,18 @@ services:
   postgres:
     image: "postgres"
     restart: always
-    container_name: "postgres-5432"
+    container_name: "postgres"
     environment:
       - POSTGRES_USER=sbs
-      - POSTGRES_PASSWORD=sbs
-      - POSTGRES_DB=my_db
-    # ports:
-    #   - "5432:5432"
-    network_mode: "host"
+      - POSTGRES_PASSWORD=CpZrKPUuQZYzVHTchPkQ
+      - POSTGRES_DB=ag-slotty
+    ports:
+      - "5432:5432"
     volumes:
-      - ./volumes:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
 
+volumes:
+  postgres:
+     external: true
+     
+# docker volume create --driver local --opt type=tmpfs --opt device=/data/docker  postgres
