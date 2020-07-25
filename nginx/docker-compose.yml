@@ -2,25 +2,26 @@ version: '3.8'
 services:
   nginx: 
     image: nginx:latest
-    container_name: production_nginx
     restart: always
     volumes:
-      - type: volume
-        source: html
+      - type: bind
+        source: /mnt/html
         target: /myhtml
-        volume:
-          nocopy: true
-      - ./conf.d:/etc/nginx/conf.d
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - type: bind
+        source: /mnt/config/nginx/conf.d
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: /mnt/config/nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
     ports:
       - 80:80
       - 443:443
 #    network_mode: "host"
 
  
-volumes:
-  html:
-    driver_opts:
-      type: "nfs"
-      o: "addr=vphim.co,nolock,soft,rw"
-      device: ":/mnt/html"
+#volumes:
+#  html:
+#    driver_opts:
+#      type: "nfs"
+#      o: "addr=vphim.co,nolock,soft,rw"
+#      device: ":/mnt/html"
