@@ -1,46 +1,16 @@
 scrape_configs:
-- job_name: default
+- job_name: api_metric
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 9090.vphim.co
-- job_name: ca
+    - stag:9060
+- job_name: worker
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 8080.vphim.co
-- job_name: 40000
+    - stag:9080
+- job_name: messaging
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 40000.vphim.co
-- job_name: 40001
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 40001.vphim.co
-- job_name: 40002
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 40002.vphim.co
-- job_name: 40003
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 127.0.0.1:40003
-- job_name: 40004
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 127.0.0.1:40004
-- job_name: prometheus
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 64311.vphim.co
-- job_name: windows_host
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 192.168.1.10:9182
+    - stag:9065
