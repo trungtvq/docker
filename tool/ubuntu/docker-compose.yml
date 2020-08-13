@@ -1,0 +1,14 @@
+version: '3.3'
+services: 
+    ubuntu:
+        container_name: ubuntu1
+        restart: always
+        image: u18
+        networks:
+        - backend
+        - postgres
+networks:
+  backend:
+    external: true
+  postgres:
+    external: true
