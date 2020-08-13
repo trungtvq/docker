@@ -1,6 +1,7 @@
 #!/bin/bash
 docker run -d --name jaeger --restart=always \
   -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
+  -e memory.max-traces=5 \
   -p 5775:5775/udp \
   -p 6831:6831/udp \
   -p 6832:6832/udp \
