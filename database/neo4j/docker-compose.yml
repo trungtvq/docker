@@ -3,6 +3,7 @@ services:
     neo4j:
         container_name: neo4j
         image: neo4j
+        restart: always
         environment: 
             - NEO4J_AUTH=neo4j/qweqwe
         volumes: 

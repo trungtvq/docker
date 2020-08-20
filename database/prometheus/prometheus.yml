@@ -1,16 +1,32 @@
 scrape_configs:
-- job_name: api_metric
+- job_name: stag_metric
   scrape_interval: 5s
   static_configs:
   - targets:
     - stag:9060
-- job_name: worker
+- job_name: stag_worker
   scrape_interval: 5s
   static_configs:
   - targets:
     - stag:9080
-- job_name: messaging
+- job_name: stag_messaging
   scrape_interval: 5s
   static_configs:
   - targets:
     - stag:9065
+
+- job_name: dev_metric
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - dev:9060
+- job_name: dev_worker
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - dev:9080
+- job_name: dev_messaging
+  scrape_interval: 5s
+  static_configs:
+  - targets:
+    - dev:9065
