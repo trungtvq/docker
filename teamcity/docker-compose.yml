@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  server:
+    image: jetbrains/teamcity-server
+    restart: always
+    ports:
+      - 8111:8111
+    volumes:
+      - teamcity_server:/data/teamcity_server/datadir
+      - teamcity_log:/opt/teamcity/logs
+  agent:
+    image: jetbrains/teamcity-agent
+    restart: always
+    ports:
+      - 9090
+    environment:
+      - SERVER_URL=vphim.co:8111
+    volumes:
+    - teamcity_agent:/data/teamcity_agent/conf
+
+networks:
+  team:
+volumes:
+ teamcity_log:
+ teamcity_server:
+ teamcity_agent:
