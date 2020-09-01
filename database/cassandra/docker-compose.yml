@@ -20,12 +20,12 @@ services:
   cassandra-web:
     image: metavige/cassandra-web
     environment:
-      CASSANDRA_HOST: 192.168.3.254
+      CASSANDRA_HOST: ${HOST:-10.148.0.9}
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
     restart: always
     ports:
-     - 3001:3000
+     - 3042:3000
     deploy:
       replicas: 1
       resources:
