@@ -4,6 +4,8 @@ services:
         build: 
             context: .
         image: sameersbn/squid:3.5.27-2
+        volumes: 
+            - ./squid.conf:/etc/squid/squid.conf
         ports:
             - 3128:3128
         
