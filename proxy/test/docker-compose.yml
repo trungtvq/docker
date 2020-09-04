@@ -1,0 +1,9 @@
+version: '3.8'
+services: 
+    test:
+        image: trungtvq/ubuntu:latest
+        environment: 
+            - env=stag
+            - http_proxy=proxy.jtech.asia:8888
+            - https_proxy=proxy.jtech.asia:8888
+            - no_proxy=integration-api.wlab88.local
