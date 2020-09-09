@@ -1,31 +1,146 @@
-version: "3.8"
+version: "3.3"
+
+# make sure that docker machine has enough memory to run the cluster.
+# setting it up to 4GB seems to work.
+
 services:
-  cassandra:
-    image: cassandra:3.11.4
+
+  cassandra-seed:
+    image: cassandra:latest
     ports:
-    - 7000:7000
-    - 7001:7001
-    - 7199:7199
-    - 9042:9042
-    - 9160:9160
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 10000M
-      restart_policy:
-        condition: on-failure
+      - "9042:9042"
+    volumes:
+      - "cassandra_data_seed:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    networks:
+      - cass
+    restart: always
+
+
+  cassandra1:
+    image: cassandra:latest
+    ports:
+      - "19041:9042"
+    volumes:
+      - "cassandra_data_1:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+  cassandra2:
+    image: cassandra:latest
+    ports:
+      - "19042:9042"
+    volumes:
+      - "cassandra_data_2:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+  cassandra3:
+    image: cassandra:latest
+    ports:
+      - "19043:9042"
+    volumes:
+      - "cassandra_data_3:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+
+  cassandra4:
+    image: cassandra:latest
+    ports:
+      - "19044:9042"
+    volumes:
+      - "cassandra_data_4:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se2"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+  cassandra5:
+    image: cassandra:latest
+    ports:
+      - "19045:9042"
+    volumes:
+      - "cassandra_data_5:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se2"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
 
   cassandra-web:
     image: metavige/cassandra-web
     environment:
-      CASSANDRA_HOST: ${HOST:-10.148.0.9}
+      CASSANDRA_HOST: 10.148.0.9
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
     restart: always
+    networks:
+     - cass
     ports:
-     - 3042:3000
+     - 4000:3000
     deploy:
       replicas: 1
       resources:
@@ -34,3 +149,14 @@ services:
           memory: 1000M
       restart_policy:
         condition: on-failure
+
+volumes:
+  cassandra_data_seed:
+  cassandra_data_1:
+  cassandra_data_2:
+  cassandra_data_3:
+  cassandra_data_4:
+  cassandra_data_5:
+networks:
+  cass:
+   external: true
