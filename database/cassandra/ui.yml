@@ -3,7 +3,7 @@ services:
   cassandra-web1:
     image: markusgulden/cassandra-web
     environment:
-      CASSANDRA_HOST_IPS: 10.148.0.9
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
       CASSANDRA_PORT: 19041
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
@@ -24,7 +24,7 @@ services:
   cassandra-web2:
     image: markusgulden/cassandra-web
     environment:
-      CASSANDRA_HOST_IPS: 10.148.0.9
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
       CASSANDRA_PORT: 19042
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
@@ -45,7 +45,7 @@ services:
   cassandra-web3:
     image: markusgulden/cassandra-web
     environment:
-      CASSANDRA_HOST_IPS: 10.148.0.9
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
       CASSANDRA_PORT: 19043
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
@@ -65,7 +65,7 @@ services:
   cassandra-web4:
     image: markusgulden/cassandra-web
     environment:
-      CASSANDRA_HOST_IPS: 10.148.0.9
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
       CASSANDRA_PORT: 19044
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
@@ -85,7 +85,7 @@ services:
   cassandra-web5:
     image: markusgulden/cassandra-web
     environment:
-      CASSANDRA_HOST_IPS: 10.148.0.9
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
       CASSANDRA_PORT: 19045
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra

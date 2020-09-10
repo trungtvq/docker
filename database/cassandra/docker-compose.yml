@@ -4,11 +4,23 @@ version: "3.3"
 # setting it up to 4GB seems to work.
 
 services:
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042:9042"
+    volumes:
+      - "cassandra:/var/lib/cassandra"
+    environment:
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    networks:
+      - cass
+    restart: always
 
   cassandra-seed:
     image: cassandra:latest
     ports:
-      - "9042:9042"
+      - "19040:9042"
     volumes:
       - "cassandra_data_seed:/var/lib/cassandra"
     environment:
@@ -86,61 +98,18 @@ services:
     networks:
      - cass
 
-
-
-  cassandra4:
-    image: cassandra:latest
-    ports:
-      - "19044:9042"
-    volumes:
-      - "cassandra_data_4:/var/lib/cassandra"
-    environment:
-      - "CASSANDRA_SEEDS=cassandra-seed"
-      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
-#      needed for setting up custom cluster name
-      - "CASSANDRA_DC=se2"
-      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
-      - MAX_HEAP_SIZE=4G
-      - HEAP_NEWSIZE=4G
-    depends_on:
-      - cassandra-seed
-    restart: always
-    networks:
-     - cass
-
-
-  cassandra5:
-    image: cassandra:latest
-    ports:
-      - "19045:9042"
-    volumes:
-      - "cassandra_data_5:/var/lib/cassandra"
-    environment:
-      - "CASSANDRA_SEEDS=cassandra-seed"
-      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
-#      needed for setting up custom cluster name
-      - "CASSANDRA_DC=se2"
-      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
-      - MAX_HEAP_SIZE=4G
-      - HEAP_NEWSIZE=4G
-    depends_on:
-      - cassandra-seed
-    restart: always
-    networks:
-     - cass
-
-
   cassandra-web:
-    image: metavige/cassandra-web
+    image: markusgulden/cassandra-web
     environment:
-      CASSANDRA_HOST: 10.148.0.9
+      CASSANDRA_HOST_IPS: ${IPS:-192.168.1.10}
+      CASSANDRA_PORT: 9042
       CASSANDRA_USER: cassandra
       CASSANDRA_PASSWORD: cassandra
     restart: always
     networks:
      - cass
     ports:
-     - 4000:3000
+     - 4050:3000
     deploy:
       replicas: 1
       resources:
