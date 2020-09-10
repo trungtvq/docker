@@ -4,15 +4,9 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-      - type: bind
-        source: /mnt/html
-        target: /myhtml
-      - type: bind
-        source: /mnt/config/nginx/conf.d
-        target: /etc/nginx/conf.d
-      - type: bind
-        source: /mnt/config/nginx/nginx.conf
-        target: /etc/nginx/nginx.conf
+      - /data/html:/myhtml
+      - ./conf.d:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
       - 443:443
