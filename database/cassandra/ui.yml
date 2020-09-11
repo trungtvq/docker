@@ -1,0 +1,108 @@
+version: '3.3'
+services:
+  cassandra-web1:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19041
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4010:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+
+  cassandra-web2:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19042
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4020:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+
+  cassandra-web3:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19043
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4030:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+  cassandra-web4:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19044
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4040:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+  cassandra-web5:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19045
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4050:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+
+networks:
+   cass:
+     external: true

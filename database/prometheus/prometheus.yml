@@ -1,56 +1,32 @@
 scrape_configs:
-- job_name: default
+- job_name: stag_metric
   scrape_interval: 5s
   static_configs:
   - targets:
-    - localhost:9090
-- job_name: a
+    - stag:9060
+- job_name: stag_worker
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10010
-- job_name: b
+    - stag:9080
+- job_name: stag_messaging
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10011
-- job_name: c
+    - stag:9065
+
+- job_name: dev_metric
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10012
-- job_name: d
+    - dev:9060
+- job_name: dev_worker
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10013
-- job_name: e
+    - dev:9080
+- job_name: dev_messaging
   scrape_interval: 5s
   static_configs:
   - targets:
-    - 10.79.22.67:10014
-- job_name: prometheus
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64311
-- job_name: mte_consumer
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64312
-- job_name: tpe_consumer
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64313
-- job_name: internal_consumer
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 10.30.83.2:64315
-- job_name: windows_host
-  scrape_interval: 5s
-  static_configs:
-  - targets:
-    - 192.168.1.10:9182
+    - dev:9065

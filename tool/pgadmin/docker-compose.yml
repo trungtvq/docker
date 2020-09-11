@@ -1,0 +1,21 @@
+version: '3.3'
+services: 
+    pgadmin:
+        container_name: pgadmin4
+        restart: always
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: qweqwe
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-qweqwe}
+        volumes:
+        - pgadmin:/root/.pgadmin
+        ports:
+        - 4444:80
+        networks:
+        - postgres
+volumes:
+  pgadmin:
+    external: true
+networks:
+  postgres:
+    external: true

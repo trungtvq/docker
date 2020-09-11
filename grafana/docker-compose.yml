@@ -5,20 +5,16 @@ services:
   container_name: grafana
   restart: always
   ports:
-    - "13000:3000"
+    - "3000:3000"
   environment:
     - GF_SECURITY_ADMIN_PASSWORD=password
   env_file:
     - 'env.grafana'
   volumes:
-    # Data persistency
-    # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
     - grafana-volume:/var/lib/grafana
-
-networks:
-  default:
-    external:
-      name: backend
+  extra_hosts:
+     - "stag:172.31.26.16"
+     - "gg:35.240.242.84"
 volumes:
   grafana-volume:
     external: true

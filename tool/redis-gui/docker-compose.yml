@@ -1,0 +1,30 @@
+version: '2'
+services:
+    php-redis-admin:
+        image: erikdubbelboer/phpredisadmin
+        container_name: redis-gui   
+        environment:
+            - REDIS_1_HOST=redis_test_test.redis
+            - REDIS_2_HOST=redis.redis
+        ports:
+            - "5555:80"
+        networks:
+            - redis
+
+
+    redis-commander:
+        image: rediscommander/redis-commander:latest
+        container_name: redis-commander
+        environment:
+            - REDIS_HOSTS=redis_test_test.redis:6379
+            - HTTP_USER=qweqwe
+            - HTTP_PASSWORD=qweqwe
+        ports:
+            - 5556:8081
+        networks:
+            - redis
+
+networks: 
+    redis:
+        external: true
+    

@@ -1,0 +1,19 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  nginx-copy:
+    image: 'nginx'
+    container_name: 'ubuntu-copy'
+    environment:
+      - MONGO_INITDB_DATABASE='my_db'
+      - MONGO_INITDB_ROOT_USERNAME=trung
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./script.sh:/tmp/data/
+      - not_null_volume:/data/db
+    network_mode: "host"
+
+volumes:
+  not_null_volume:
+    external: true

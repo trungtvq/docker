@@ -7,11 +7,8 @@ services:
     - 8080:8080
     volumes:
     - /:/rootfs:ro
-    - /var/run:/var/run:rw
+    - /var/run:/var/run:ro
     - /sys:/sys:ro
+    - /dev/disk/:/dev/disk:ro
     - /var/lib/docker/:/var/lib/docker:ro
     restart: always
-networks:
-  default:
-    external:
-      name: backend

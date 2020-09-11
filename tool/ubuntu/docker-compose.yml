@@ -1,0 +1,16 @@
+version: '3.3'
+services: 
+    ubuntu:
+        container_name: ubuntu1
+        restart: always
+        image: u18
+        networks:
+        - backend
+        - postgres
+        extra_hosts:
+          - "redis.joker88.club:${PRIVATE_IP}"
+networks:
+  backend:
+    external: true
+  postgres:
+    external: true
