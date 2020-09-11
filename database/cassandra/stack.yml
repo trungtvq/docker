@@ -1,0 +1,155 @@
+version: '3.3'
+services:
+  cassandra-seed:
+    image: cassandra:latest
+    ports:
+      - "19040:9042"
+    volumes:
+      - "cassandra_data_seed:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    networks:
+      - cass
+    restart: always
+
+
+  cassandra1:
+    image: cassandra:latest
+    ports:
+      - "19041:9042"
+    volumes:
+      - "cassandra_data_1:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+  cassandra2:
+    image: cassandra:latest
+    ports:
+      - "19042:9042"
+    volumes:
+      - "cassandra_data_2:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+  cassandra3:
+    image: cassandra:latest
+    ports:
+      - "19043:9042"
+    volumes:
+      - "cassandra_data_3:/var/lib/cassandra"
+    environment:
+      - "CASSANDRA_SEEDS=cassandra-seed"
+      - "CASSANDRA_CLUSTER_NAME=Test Cluster"
+#      needed for setting up custom cluster name
+      - "CASSANDRA_DC=se1"
+      - "CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch"
+      - MAX_HEAP_SIZE=4G
+      - HEAP_NEWSIZE=4G
+    depends_on:
+      - cassandra-seed
+    restart: always
+    networks:
+     - cass
+
+
+  cassandra-web1:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19041
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4001:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+
+  cassandra-web2:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19042
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4002:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+
+  cassandra-web3:
+    image: markusgulden/cassandra-web
+    environment:
+      CASSANDRA_HOST_IPS: ${IPS:-10.148.0.9}
+      CASSANDRA_PORT: 19043
+      CASSANDRA_USER: cassandra
+      CASSANDRA_PASSWORD: cassandra
+    restart: always
+    networks:
+     - cass
+    ports:
+     - 4003:3000
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+
+volumes:
+    cassandra_data_seed:
+    cassandra_data_1:
+    cassandra_data_2:
+    cassandra_data_3:
+networks:
+   cass:
+     external: true
