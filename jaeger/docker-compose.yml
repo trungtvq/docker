@@ -4,6 +4,7 @@ services:
   jaeger:
     image: jaegertracing/all-in-one:1.18
     ports:
+     - "6831:6831/udp"
      - "6832:6832/udp" 
      - "5775:5775/udp" 
      - "5778:5778/tcp" 
@@ -17,8 +18,8 @@ services:
     restart: always
     environment:
      - SPAN_STORAGE_TYPE=cassandra
-     - CASSANDRA_SERVERS=vphim.co
-     - CASSANDRA_PORT=9042
+     - CASSANDRA_SERVERS=${CASS:-vphim.co}
+     - CASSANDRA_PORT=${CASS_PORT:-9042}
      - CASSANDRA_KEYSPACE=log
      - CASSANDRA_USERNAME=cassandra
      - CASSANDRA_PASSWORD=cassandra
