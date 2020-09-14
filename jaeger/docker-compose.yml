@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   jaeger:
-    image: jaegertracing/all-in-one:1.18
+    image: jaegertracing/all-in-one
     ports:
      - "6831:6831/udp"
      - "6832:6832/udp" 
@@ -15,6 +15,8 @@ services:
      - "16686:16686/tcp" 
      - "16687:16687/tcp" 
      - "14270:14270/tcp" 
+    networks:
+     - cass
     restart: always
     environment:
      - SPAN_STORAGE_TYPE=cassandra
@@ -31,3 +33,6 @@ services:
           memory: 400M
       restart_policy:
         condition: on-failure
+networks:
+  cass:
+    external: true
