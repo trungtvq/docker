@@ -11,10 +11,11 @@ services:
   env_file:
     - 'env.grafana'
   volumes:
-    - grafana-volume:/var/lib/grafana
+    - grafana:/var/lib/grafana
   extra_hosts:
      - "stag:172.31.26.16"
      - "gg:35.240.242.84"
+     - "lc:192.168.1.10"
 volumes:
-  grafana-volume:
+  grafana:
     external: true

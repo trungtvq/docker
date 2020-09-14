@@ -14,3 +14,4 @@ services:
       - "stag:${stag}"
       - "cloud:${cloud}"   
       - "dev:${dev}"
+      - "lc:192.168.1.10"
