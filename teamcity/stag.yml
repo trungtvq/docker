@@ -12,25 +12,16 @@ services:
       - /data/teamcity/server:/data/teamcity_server/datadir
       - /data/teamcity/log:/opt/teamcity/logs
     networks:
-        - stag
+      - app
   agent:
     image: jetbrains/teamcity-agent
     ports:
       - 9090
-    environment:
-      - SERVER_URL=${SERVER:-192.168.1.10}:8111
     networks:
-        - stag
-    
-    
-  agent_remote:
-    image: jetbrains/teamcity-agent
-    ports:
-    - 9090
+        - app
     environment:
-      - SERVER_URL=${SERVER:-192.168.1.10}:8111
-    networks:
-        - stag
+      - SERVER_URL=${SERVER:-stag}:8111
+
 networks:
-  stag:
+  app:
    external: true
