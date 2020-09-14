@@ -7,29 +7,29 @@ services:
     restart: always
     container_name: "postgres"
     environment:
-      - POSTGRES_USER=sbs
-      - POSTGRES_PASSWORD=CpZrKPUuQZYzVHTchPkQ
-      - POSTGRES_DB=ag-slotty
+      - POSTGRES_USER=trung
+      - POSTGRES_PASSWORD=${PASS:-123456789}
+      - POSTGRES_DB=test
     ports:
       - "5432:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
     networks:
-      - postgres
+      - stag
 
   pgadmin:
     container_name: pgadmin_container
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: trung
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_DEFAULT_PASSWORD: ${UI_PASS:-admin}
     volumes:
        - pgadmin:/root/.pgadmin
     ports:
       - 5050:80
     networks:
-      - postgres
-    restart: unless-stopped
+      - stag
+    restart: always
 
 volumes:
   pgadmin:
@@ -37,6 +37,6 @@ volumes:
      external: true
 
 networks:
-  postgres:
-    driver: bridge
-# docker volume create --driver local --opt type=tmpfs --opt device=/data/docker  postgres
+  stag:
+   external: true
+# docker volume create --driver local --opt type=tmpfs --opt device=/data/volumes/postgres  postgres
