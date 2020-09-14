@@ -1,7 +1,7 @@
 version: "3.3"
 #  mkdir -p /data/teamcity/server
-#  mkdir -p /data/temcity/log
-#  sudo rm -rf /data/server/* && sudo rm -rf /data/log/*
+#  mkdir -p /data/teamcity/log
+#  sudo rm -rf /data/teamcity/server/* && sudo rm -rf /data/teamcity/log/*
 #  docker stack deploy --compose-file=teamcity-stack.yml teamcity
 services:
   server:
