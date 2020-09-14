@@ -20,7 +20,7 @@ services:
      - SPAN_STORAGE_TYPE=cassandra
      - CASSANDRA_SERVERS=${CASS:-vphim.co}
      - CASSANDRA_PORT=${CASS_PORT:-9042}
-     - CASSANDRA_KEYSPACE=log
+     - CASSANDRA_KEYSPACE=trace_log
      - CASSANDRA_USERNAME=cassandra
      - CASSANDRA_PASSWORD=cassandra
     deploy:
