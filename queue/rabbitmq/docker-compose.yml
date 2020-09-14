@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    deploy:
+      replicas: 3
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password
+      - RABBITMQ_USE_LONGNAME=true
+    #healthcheck:
+    #  test: ["rabbitmqctl", "node_health_check"]
+    #  interval: 60s
+    #  timeout: 5s
+    #  retries: 3
+    networks:
+      - queue
+    ports:
+      - 25672:25672
+      - 15672:15672
+      - 5672:5672
+      - 4369:4369
+
+networks:
+    queue:
