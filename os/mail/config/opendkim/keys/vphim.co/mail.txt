@@ -1,0 +1,3 @@
+mail._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAutxRoOGETBGBSr6PHamhWLg+k0h+p2imXxDcZC/fwUmY0Bqjjsw9jqNwSGvVNo9Plf48+NSxFyRgjdXFtOowAtJzvqXD2RsnI3lwAwh6gqpcGoDNHpfinvWVSs7ihMAkPjA0WCWZfUAoG6ViFwrUUyBx8NmM2RaMsTHPvp5AjsJHyV0SBdV34L4DtNPIVMKFYtVuvPC1PJuxCY"
+	  "M4FNa6ZFCYDnni8m+YsnB/n+n+BCvMTtdVLYnYI7Z/N+T6l0nUtf7lEtG4UNGSBI2u/mvsgO+ORAiAYkwAqUJD/AjdFnqp+nfm5RiNdH5b2KX0x1fNu0Xr8MkLcwRGf6Jp+QzqFQIDAQAB" )  ; ----- DKIM key mail for vphim.co

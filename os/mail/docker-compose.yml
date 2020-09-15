@@ -29,4 +29,3 @@ volumes:
     driver: local
   maillogs:
     driver: local
-
