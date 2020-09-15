@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+    master:
+        image: trungtvq/ku
+        networks: 
+            dev:
+                ipv4_address: 1.1.1.10
+    worker1:
+        image: trungtvq/ku
+        networks: 
+            dev:
+                ipv4_address: 1.1.1.11
+    worker2:
+        image: trungtvq/ku
+        networks: 
+            dev:
+                ipv4_address: 1.1.1.12
+    worker3:
+        image: trungtvq/ku
+        networks: 
+            dev:
+                ipv4_address: 1.1.1.13
+networks: 
+    dev:
+        external: true

@@ -16,7 +16,7 @@ services:
     networks:
         - app
     environment:
-      - SERVER_URL=${SERVER:-stag}:8111
+      - SERVER_URL=${SERVER:-192.168.3.254}:8111
 
 networks:
   app:
