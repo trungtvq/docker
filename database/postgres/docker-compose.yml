@@ -40,3 +40,4 @@ networks:
   stag:
    external: true
 # docker volume create --driver local --opt type=tmpfs --opt device=/data/volumes/postgres  postgres
+
