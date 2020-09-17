@@ -6,8 +6,8 @@ services:
     deploy:
       replicas: 3
     environment:
-      - RABBITMQ_DEFAULT_USER=admin
-      - RABBITMQ_DEFAULT_PASS=password
+      - RABBITMQ_DEFAULT_USER=sbs
+      - RABBITMQ_DEFAULT_PASS=devdev
       - RABBITMQ_USE_LONGNAME=true
     #healthcheck:
     #  test: ["rabbitmqctl", "node_health_check"]
